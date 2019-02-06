@@ -4,7 +4,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as L from 'leaflet';
-import 'leaflet-providers';
 import { Alf } from '../model/alf.model';
 
 @Component({
@@ -20,23 +19,18 @@ export class MapComponent implements OnInit, OnDestroy {
   popup: L.Popup;
   alfLayer;
 
-  constructor(
-    public alfService: AlfService,
-    private mapService: MapService
-  ) { }
+  constructor(public alfService: AlfService, private mapService: MapService) {}
 
   ngOnInit() {
     this.map = this.mapService.initMap();
 
     this.alfService.alfs
-      .pipe(
-        takeUntil(this.unsubscribeAll)
-      )
+      .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(alfs => {
         this.alfs = alfs;
       });
 
-    this.map.on('click', (e) => {
+    this.map.on('click', e => {
       this.onMapClick(e);
     });
   }
@@ -46,8 +40,5 @@ export class MapComponent implements OnInit, OnDestroy {
     this.unsubscribeAll.complete();
   }
 
-  onMapClick(e) {
-
-  }
-
+  onMapClick(e) {}
 }
