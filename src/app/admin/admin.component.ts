@@ -14,17 +14,17 @@ export class AdminComponent implements OnInit, OnDestroy {
   unsubscribeAll = new Subject();
 
   constructor(
-    private alfService: AlfService
+    // private alfService: AlfService
   ) { }
 
   ngOnInit() {
-    this.alfService.alfs
-      .pipe(
-        takeUntil(this.unsubscribeAll)
-      )
-      .subscribe(alfs => {
-        this.alfs = alfs;
-      });
+    // this.alfService.alfs
+    //   .pipe(
+    //     takeUntil(this.unsubscribeAll)
+    //   )
+    //   .subscribe(alfs => {
+    //     this.alfs = alfs;
+    //   });
   }
 
   ngOnDestroy() {
@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   deleteAlf(alfId: string) {
-    this.alfService.deleteAlf(alfId);
+    // this.alfService.deleteAlf(alfId);
   }
 
 

@@ -37,18 +37,18 @@ export class MapComponent implements OnInit, OnDestroy {
     this.characters = this.userService.characters;
     this.colors = this.mapService.colors;
 
-    this.map = this.mapService.initMap();
+    // this.map = this.mapService.initMap();
 
-    this.alfService.alfs
-      .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe(alfs => {
-        this.alfs = alfs;
-        this.mapService.initAlfLayer(this.map, alfs);
-      });
+    // this.alfService.alfs
+    //   .pipe(takeUntil(this.unsubscribeAll))
+    //   .subscribe(alfs => {
+    //     this.alfs = alfs;
+    //     this.mapService.initAlfLayer(this.map, alfs);
+    //   });
 
-    this.map.on('click', e => {
-      this.onMapClick(e);
-    });
+    // this.map.on('click', e => {
+    //   this.onMapClick(e);
+    // });
   }
 
   ngOnDestroy() {
@@ -58,14 +58,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
   onMapClick(e) {
     if (this.reportActive) {
-      const alf = new Alf();
-      alf.reportedBy = this.selectedCharacter;
-      alf.color = this.colors[this.selectedColorIndex].name;
-      alf.position = new firebase.firestore.GeoPoint(e.latlng.lat, e.latlng.lng);
+      // const alf = new Alf();
+      // alf.reportedBy = this.selectedCharacter;
+      // alf.color = this.colors[this.selectedColorIndex].name;
+      // alf.position = new firebase.firestore.GeoPoint(e.latlng.lat, e.latlng.lng);
 
-      this.alfService.addAlf(alf).then(() => {
-        this.reportActive = false;
-      });
+      // this.alfService.addAlf(alf).then(() => {
+      //   this.reportActive = false;
+      // });
     }
   }
 

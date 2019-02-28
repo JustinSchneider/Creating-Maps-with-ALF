@@ -94,35 +94,35 @@ export class MapService {
     private afs: AngularFirestore
   ) { }
 
-  initMap(): L.Map {
-    const alfMap = L.map('alf-map', {
-      center: [40.261905, -76.880033],
-      zoom: 16,
-      maxZoom: 16
-    });
+  // initMap(): L.Map {
+  //   const alfMap = L.map('alf-map', {
+  //     center: [40.261905, -76.880033],
+  //     zoom: 16,
+  //     maxZoom: 16
+  //   });
 
-    this.addTileLayer(alfMap);
+  //   this.addTileLayer(alfMap);
 
-    return alfMap;
-  }
+  //   return alfMap;
+  // }
 
-  addTileLayer(alfMap: L.Map) {
-    L.tileLayer(this.tilesGray, {
-      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
-    }).addTo(alfMap);
-  }
+  // addTileLayer(alfMap: L.Map) {
+  //   L.tileLayer(this.tilesGray, {
+  //     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+  //   }).addTo(alfMap);
+  // }
 
-  initAlfLayer(alfMap: L.Map, alfs: Alf[]) {
-    if (this.alfLayer) {
-      alfMap.removeLayer(this.alfLayer);
-    }
-    this.alfLayer = L.geoJSON(undefined, {}).addTo(alfMap);
+  // initAlfLayer(alfMap: L.Map, alfs: Alf[]) {
+  //   if (this.alfLayer) {
+  //     alfMap.removeLayer(this.alfLayer);
+  //   }
+  //   this.alfLayer = L.geoJSON(undefined, {}).addTo(alfMap);
 
-    alfs.forEach(alf => {
-      const icon = this.icons.filter(i => i.color === alf.color)[0];
-      const mapCoords = new L.LatLng(alf.position.latitude, alf.position.longitude);
-      const popup = '<strong>Sighting by</strong>:<br>' + alf.reportedBy;
-      L.marker(mapCoords, icon).bindPopup(popup).addTo(this.alfLayer);
-    });
-  }
+  //   alfs.forEach(alf => {
+  //     const icon = this.icons.filter(i => i.color === alf.color)[0];
+  //     const mapCoords = new L.LatLng(alf.position.latitude, alf.position.longitude);
+  //     const popup = '<strong>Sighting by</strong>:<br>' + alf.reportedBy;
+  //     L.marker(mapCoords, icon).bindPopup(popup).addTo(this.alfLayer);
+  //   });
+  // }
 }
