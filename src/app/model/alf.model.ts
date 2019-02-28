@@ -1,29 +1,31 @@
+import * as firebase from 'firebase/app';
+
 export interface IAlf {
   id: string;
-  discoveredBy: string;
+  reportedBy: string;
   color: string;
-  geoJson: any;
+  position: any;
 }
 
 export class Alf implements IAlf {
   id: string;
-  discoveredBy: string;
+  reportedBy: string;
   color: string;
-  geoJson: any;
+  position: firebase.firestore.GeoPoint;
 
   constructor() {
     this.id = '';
-    this.discoveredBy = '';
+    this.reportedBy = '';
     this.color = '#fff';
-    this.geoJson = {};
+    this.position = new firebase.firestore.GeoPoint(0, 0);
   }
 
   static fromData(data: IAlf): Alf {
     const alfInst = new Alf();
     alfInst.id = data.id;
-    alfInst.discoveredBy = data.discoveredBy;
+    alfInst.reportedBy = data.reportedBy;
     alfInst.color = data.color;
-    alfInst.geoJson = (typeof data.geoJson === 'string') ? JSON.parse(data.geoJson) : data.geoJson;
+    alfInst.position = data.position;
 
     return alfInst;
   }
@@ -31,9 +33,9 @@ export class Alf implements IAlf {
   public toData(): IAlf {
     return <IAlf> {
       id: this.id,
-      discoveredBy: this.discoveredBy,
+      reportedBy: this.reportedBy,
       color: this.color,
-      geoJson: JSON.stringify(this.geoJson)
+      position: this.position
     };
   }
 }

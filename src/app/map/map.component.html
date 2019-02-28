@@ -1,7 +1,28 @@
 <div class="map-container">
-  <div class="title">Report A.L.F. Sighting</div>
+  <div class="title">A.L.F. Sightings</div>
+  <div class="link-panel">
+    <a routerLink="/admin">Admin</a>
+  </div>
   <div class="tool-panel">
-    <button>Report Sighting</button>
+    <ng-container *ngIf="reportActive; else reportInactive">
+        <p>Click the map to report a sighting.</p>
+        <div class="form-group">
+          <label for="selColor">A.L.F. Color</label>
+          <select class="form-control" name="selColor" id="selColor" [ngStyle]="{'color': colors[selectedColorIndex].hexValue}" [(ngModel)]="selectedColorIndex">
+            <option *ngFor="let color of colors; let i = index" [value]="i" [ngStyle]="{'color': color.hexValue}">{{ color.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="selReportedBy">Reported By</label>
+          <select class="form-control" name="selReportedBy" id="selReportedBy" [(ngModel)]="selectedCharacter">
+            <option *ngFor="let char of characters" [value]="char">{{ char }}</option>
+          </select>
+        </div>
+        <button class="btn btn-block btn-warning" (click)="reportActive = false">Cancel</button>
+    </ng-container>
+    <ng-template #reportInactive>
+        <button class="btn btn-block btn-primary" (click)="reportActive = true">Report Sighting</button>
+    </ng-template>
   </div>
   <div class="map alf-map" id="alf-map"></div>
 </div>

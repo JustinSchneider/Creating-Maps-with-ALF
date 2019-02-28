@@ -1,3 +1,38 @@
-<p>
-  admin works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h1>
+        A.L.F. Sightings
+      </h1>
+    </div>
+    <div class="col-1">
+      <a routerLink="/" class="header-link">Map</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Color</th>
+            <th scope="col">Reported By</th>
+            <th scope="col">Position</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alf of alfs">
+            <td [innerHtml]="alf.id"></td>
+            <td [innerHtml]="alf.color"></td>
+            <td [innerHtml]="alf.reportedBy"></td>
+            <td [innerHtml]="alf.position.latitude + ',' + alf.position.longitude"></td>
+            <td>
+              <button class="btn btn-danger float-right" (click)="deleteAlf(alf.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
