@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { ToastrModule } from 'ngx-toastr';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAuthModule,
+    // AngularFirestoreModule,
     ToastrModule.forRoot()
   ],
   providers: [
     AlfService,
-    MapService
+    MapService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

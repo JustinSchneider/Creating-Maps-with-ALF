@@ -91,7 +91,7 @@ export class MapService {
   ];
 
   constructor(
-    private afs: AngularFirestore
+    // private afs: AngularFirestore
   ) { }
 
   // initMap(): L.Map {

@@ -13,7 +13,7 @@ export class AlfService {
   alfs: Observable<Alf[]>;
 
   constructor(
-    private afs: AngularFirestore,
+    // private afs: AngularFirestore,
     private toastr: ToastrService
   ) {
     // this.alfs = this.afs.collection('alfs')
