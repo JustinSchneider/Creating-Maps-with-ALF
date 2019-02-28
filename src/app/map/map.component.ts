@@ -40,15 +40,13 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map = this.mapService.initMap();
 
     this.alfService.alfs
-      .pipe(
-        takeUntil(this.unsubscribeAll)
-      )
+      .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(alfs => {
         this.alfs = alfs;
         this.mapService.initAlfLayer(this.map, alfs);
       });
 
-    this.map.on('click', (e) => {
+    this.map.on('click', e => {
       this.onMapClick(e);
     });
   }
